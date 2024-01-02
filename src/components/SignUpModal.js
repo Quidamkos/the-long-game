@@ -65,22 +65,21 @@ export default function SignUpModal() {
   return (
     <>
       {modalState.signUpModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div className="position">
           <div
           onClick={closeModal}
-          className="w-100 h-100 bg-dark bg-opacity-75">
+          className="cache">
           </div>
             <div
-              className="position-absolute top-50 start-50 translate-middle"
-              style={{ minWidth: "400px" }}
+              className="container"
             >
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
+              <div className="">
+                <div className="content">
+                  <div className="title">
                     <h5 className="modal-title">Sign Up</h5>
                     <button 
                     onClick={closeModal}
-                    className="btn-close"></button>
+                    className="close">X</button>
                   </div>
 
                   <div className="modal-body">
@@ -131,7 +130,7 @@ export default function SignUpModal() {
                         <p className="text-danger mt-1">{validation}</p>
                       </div>
 
-                      <button className="btn btn-primary">Submit</button>
+                      <button className="submit btn-primary">Submit</button>
                     </form>
                   </div>
                 </div>
