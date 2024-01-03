@@ -19,7 +19,7 @@ function App() {
       <>
         <SignUpModal />
         <SignInModal />
-        {currentUser ? ( <NavbarLogged />):(<Navbar />)} 
+        {currentUser ? (''):(<Navbar />)} 
         
         <Routes>
           <Route path="/" element={<Home />} />

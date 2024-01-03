@@ -1,6 +1,9 @@
 //attention vulnerabilité
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,5 +15,9 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
+// Initialisation de Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialisation des services Firebase
 export const auth = getAuth(app);
+export const db = getFirestore(app);

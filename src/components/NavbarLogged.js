@@ -21,11 +21,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bar-container">
-      <Link to="/" className='navLink'>
-        The Long Game
-      </Link>
-
+    <div>
       <div>
         <button 
         onClick={logOut}
@@ -33,6 +29,6 @@ export default function Navbar() {
           Log Out
         </button>
       </div>
-    </nav>
+    </div>
   )
 }

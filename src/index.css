@@ -13,6 +13,38 @@ code {
     monospace;
 }
 
+.main-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100% 100%;
+}
+
+.profil {
+  grid-row: 1;
+
+}
+
+
+main {
+  padding: 30px;
+  border: 1px solid black;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 1000px) {
+    
+  .main-container {
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1fr;
+  } 
+
+  .profil {
+    grid-column: 2;
+  }
+}
 
 .bar-container {
   display: flex;
