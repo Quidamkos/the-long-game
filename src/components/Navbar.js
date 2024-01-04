@@ -5,6 +5,9 @@ import {signOut} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import {auth} from "../firebase-config"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFire } from '@fortawesome/free-solid-svg-icons';
+
 export default function Navbar() {
 
   const {toggleModals} = useContext(UserContext)
@@ -21,23 +24,25 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bar-container">
-      <Link to="/" className='navLink'>
-        The Long Game
-      </Link>
-
-      <div>
-        <button 
-        onClick={() => toggleModals("signUp")}
-        className="btn btn-primary">
-          Sign Up
-        </button>
-        <button 
-          onClick={() => toggleModals("signIn")}
-        className="btn btn-primary ms-2">
-          Sign In
-        </button>
-      </div>
-    </nav>
+    <div className='allContainer'>
+      <nav className="bar-container">
+        <div className='mainFire' >
+          <FontAwesomeIcon icon={faFire} />
+        </div>
+        <div className='divBtn'>
+          <p>The long game</p>
+          <button 
+          onClick={() => toggleModals("signUp")}
+          className="btn btn-primary">
+            Sign Up
+          </button>
+          <button 
+            onClick={() => toggleModals("signIn")}
+          className="btn btn-primary ms-2">
+            Sign In
+          </button>
+        </div>
+      </nav>
+    </div>
   )
 }

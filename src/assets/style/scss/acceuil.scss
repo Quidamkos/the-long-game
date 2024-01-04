@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: repeating-radial-gradient(  #0c0a0a 80%,#2f312f 90%,#3f4549 90%);
+    background-size: 65px 65px;
+}
+
+.main-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 100% 100%;
+}
+
+main {
+    margin: 10px;
+    padding: 30px;
+    border: 1px solid black;
+    background: rgba(255,255,255,.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+  }
+  
+.profil {
+grid-row: 1;
+}
+
+.player {
+height: 100%;
+display: grid;
+justify-content: center;
+width: 100%;
+grid-template-rows: 30% repeat(5, calc(70%/5));
+}
+
+img {
+width: 100px;
+}
+
+.name-profil {
+display: flex;
+justify-content: space-around;
+width: 100%;
+}
+
+.barreExperience {
+border-radius: 50px;
+border: 1px solid white;
+background-color: black;
+overflow: hidden;
+width: 75%;
+height: 15px;
+}
+
+.currentExperience {
+    background-color: rgb(255, 255, 255);
+    height: 15px;
+}
+
+button {
+height: 30px;
+padding: 5px;
+}
+
+
+@media screen and (min-width: 1000px) {
+
+.main-container {
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1fr;
+} 
+
+.profil {
+    grid-column: 2;
+}
+}

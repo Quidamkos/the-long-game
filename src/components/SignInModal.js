@@ -3,7 +3,7 @@ import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
-export default function SignUpModal() {
+export default function SignIpModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext);
   const navigate = useNavigate();
 

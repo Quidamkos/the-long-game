@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { getAuth, sendEmailVerification } from 'firebase/auth';
+import Wallpaper from "./wallpaper";
 
 export default function SignUpModal() {
   
