@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/the-long-game/static/css/main.5ea51714.css",
-    "main.js": "/the-long-game/static/js/main.d1e8b646.js",
+    "main.css": "/the-long-game/static/css/main.a081965c.css",
+    "main.js": "/the-long-game/static/js/main.ea252c50.js",
     "static/js/787.540f12b4.chunk.js": "/the-long-game/static/js/787.540f12b4.chunk.js",
+    "static/media/personna.png": "/the-long-game/static/media/personna.9d5cfe668aaa077d77d0.png",
     "index.html": "/the-long-game/index.html",
-    "main.5ea51714.css.map": "/the-long-game/static/css/main.5ea51714.css.map",
-    "main.d1e8b646.js.map": "/the-long-game/static/js/main.d1e8b646.js.map",
+    "main.a081965c.css.map": "/the-long-game/static/css/main.a081965c.css.map",
+    "main.ea252c50.js.map": "/the-long-game/static/js/main.ea252c50.js.map",
     "787.540f12b4.chunk.js.map": "/the-long-game/static/js/787.540f12b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ea51714.css",
-    "static/js/main.d1e8b646.js"
+    "static/css/main.a081965c.css",
+    "static/js/main.ea252c50.js"
   ]
 }
