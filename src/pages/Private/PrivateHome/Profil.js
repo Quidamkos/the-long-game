@@ -3,6 +3,8 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebase-config';
 import NavbarLogged from '../../../components/NavbarLogged';
+import personna from '../../../assets/Pictures/personna.png';
+import BarreExperience from '../../../components/ExpBar';
 
 
 const initialUserData = {
@@ -16,6 +18,7 @@ const initialUserData = {
 const UserProfile = () => {
   const [userProfile, setUserProfile] = useState(initialUserData);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isSettings, setIsSettings] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -35,15 +38,13 @@ const UserProfile = () => {
           setIsLoaded(true);
         }).catch(error => {
           console.error("Erreur lors de la récupération des données:", error);
-          setIsLoaded(true); // Assurez-vous de définir isLoaded même en cas d'erreur
+          setIsLoaded(true);
         });
       } else {
-        // Si aucun utilisateur n'est connecté, définissez également isLoaded
         setIsLoaded(true);
       }
     });
   
-    // Nettoyer l'écouteur d'événement
     return () => unsubscribe();
   }, []);
 
@@ -71,11 +72,30 @@ const UserProfile = () => {
     return <div>Loading...</div>;
   }
 
+
+  const viewSettings = () => {
+    setIsSettings(!isSettings);
+  };
+
   return (
     <main className='profil'>
-      <h1>User Profile</h1>
+
+      {!isSettings ? (
+        <div className='player'>
+          <img src={personna}/>
+          <div className='name-profil'>
+            <p>lvl</p>
+            <p>rank</p>
+            <p>{userProfile.nickname}</p>
+          </div>
+          <BarreExperience experience={userProfile.experience}/>
+          <p>money : {userProfile.money}</p>
+          <button onClick={viewSettings}>change settings</button>
+          <NavbarLogged />
+        </div>
+      ):(
+
       <form>
-        {/* Champs de formulaire */}
         <div>
           <label>Date of Birth:</label>
           <input
@@ -121,9 +141,10 @@ const UserProfile = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="button" onClick={saveUserData}>Save Changes</button>
-        <NavbarLogged />
+        <button onClick={viewSettings}>change settings</button>
+
       </form>
+      )}
     </main>
   );
 };

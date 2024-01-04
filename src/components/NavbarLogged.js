@@ -22,13 +22,11 @@ export default function Navbar() {
 
   return (
     <div>
-      <div>
-        <button 
-        onClick={logOut}
-        className="btn btn-danger ms-2">
-          Log Out
-        </button>
-      </div>
+      <button 
+      onClick={logOut}
+      className="btn btn-danger ms-2">
+        Log Out
+      </button>
     </div>
   )
 }

@@ -13,14 +13,14 @@ import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 function App() {
 
   const {currentUser} = useContext(UserContext)
-  console.log(currentUser)
 
+  
+  
     return (
       <>
         <SignUpModal />
         <SignInModal />
-        {currentUser ? (''):(<Navbar />)} 
-        
+        {currentUser ? (<NavbarLogged />):(<Navbar />)}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/private" element={<Private />}>
