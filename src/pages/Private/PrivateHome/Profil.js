@@ -8,6 +8,7 @@ import BarreExperience from '../../../components/ExpBar';
 
 
 const initialUserData = {
+  chapitre: 1,
   birthDate: '',
   gender: '',
   nickname: '',
@@ -21,31 +22,28 @@ const UserProfile = () => {
   const [isSettings, setIsSettings] = useState(false);
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const loadData = async () => {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
       if (user) {
         const docRef = doc(db, 'users', user.uid);
-        getDoc(docRef).then((docSnap) => {
+        try {
+          const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             setUserProfile(docSnap.data());
           } else {
-            setDoc(docRef, initialUserData).then(() => {
-              setUserProfile(initialUserData);
-            }).catch(error => {
-              console.error("Erreur lors de la création des données:", error);
-            });
+            await setDoc(docRef, initialUserData);
+            setUserProfile(initialUserData);
           }
-          setIsLoaded(true);
-        }).catch(error => {
-          console.error("Erreur lors de la récupération des données:", error);
-          setIsLoaded(true);
-        });
-      } else {
-        setIsLoaded(true);
+        } catch (error) {
+          console.error("Erreur lors de la récupération ou de la création des données:", error);
+        }
       }
-    });
-  
-    return () => unsubscribe();
+      setIsLoaded(true);
+    };
+
+    loadData();
   }, []);
 
   const handleInputChange = (e) => {

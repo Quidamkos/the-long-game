@@ -1,4 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase-config';
+import { getAuth } from 'firebase/auth';
 
 import {
   signInWithEmailAndPassword,
@@ -11,11 +14,11 @@ export const UserContext = createContext()
 
 export function UserContextProvider(props) {
 
-
   const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
   const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
   console.log("MAJ", currentUser);
   useEffect(() => {
@@ -29,6 +32,26 @@ export function UserContextProvider(props) {
 
   }, [])
 
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setCurrentUser(user);
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserProfile(docSnap.data());
+        } else {
+          setUserProfile(null);
+        }
+        setLoadingData(false); // Correction ici
+      } else {
+        setCurrentUser(null);
+        setUserProfile(null);
+        setLoadingData(false); // Et ici aussi
+      }
+    });
+  }, []);
 
   // modal
   const [modalState, setModalState] = useState({
